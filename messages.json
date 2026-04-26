@@ -1,0 +1,75 @@
+[
+  {
+    "thread_id": 1,
+    "poem_id": 1,
+    "participants": [
+      "弦",
+      "a"
+    ],
+    "messages": [
+      {
+        "from": "a",
+        "text": "a",
+        "read": true
+      },
+      {
+        "from": "a",
+        "text": "a",
+        "read": true
+      },
+      {
+        "from": "げん",
+        "text": "あ",
+        "read": true
+      }
+    ]
+  },
+  {
+    "thread_id": 2,
+    "poem_id": 1,
+    "participants": [
+      "弦",
+      "ｂ"
+    ],
+    "messages": []
+  },
+  {
+    "thread_id": 3,
+    "poem_id": 1,
+    "participants": [
+      "弦",
+      "c"
+    ],
+    "messages": [
+      {
+        "from": "c",
+        "text": "こんにちは",
+        "read": false
+      }
+    ]
+  },
+  {
+    "thread_id": 4,
+    "poem_id": 1,
+    "participants": [
+      "弦",
+      "げん"
+    ],
+    "messages": []
+  },
+  {
+    "thread_id": 5,
+    "poem_id": 1,
+    "participants": [
+      "弦",
+      "C"
+    ],
+    "messages": [
+      {
+        "from": "C",
+        "text": "ありがとう",
+        "read": false
+      }
+    ]
+  }
+]

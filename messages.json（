@@ -1,0 +1,11 @@
+[
+  {
+    "thread_id": 1,
+    "poem_id": 1,
+    "participants": ["弦", "作曲家A"],
+    "messages": [
+      {"from": "作曲家A", "text": "この詩に曲をつけたいです！"},
+      {"from": "弦", "text": "ありがとうございます！ぜひ！"}
+    ]
+  }
+]
