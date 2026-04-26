@@ -16,40 +16,24 @@ st.title("作者用スレッド一覧")
 poems = load_json(POEMS_FILE, [])
 messages = load_json(MESSAGES_FILE, [])
 
-# 作者名を取得（作品から）
 authors = list(set([p["author"] for p in poems]))
 
-st.write("作者名を選択してください")
-author = st.selectbox("作者", authors)
-
+author = st.selectbox("作者名を選択", authors)
 if not author:
     st.stop()
 
-st.write("### あなた宛のスレッド一覧")
-
-# 作者が参加しているスレッドだけ抽出
-author_threads = [
-    t for t in messages if author in t["participants"]
-]
-
-if not author_threads:
-    st.info("まだスレッドがありません")
-    st.stop()
+author_threads = [t for t in messages if author in t["participants"]]
 
 for t in author_threads:
-    # 相手の名前を取得
     other = [p for p in t["participants"] if p != author][0]
 
-    # 未読数
-    unread = sum(
-        1 for m in t["messages"]
-        if m["from"] == other and not m.get("read", False)
-    )
-
-    label = f"{other} さんとのチャット"
-    if unread > 0:
-        label += f"（未読 {unread}）"
-
-    if st.button(label, key=f"thread_{t['thread_id']}"):
+    if st.button(f"{other} さんとのチャット", key=f"author_thread_{t['thread_id']}"):
+        st.session_state["role"] = "author"
         st.session_state["selected_thread_id"] = t["thread_id"]
+
+        if "viewer_name" in st.session_state:
+            del st.session_state["viewer_name"]
+        if "selected_poem_id" in st.session_state:
+            del st.session_state["selected_poem_id"]
+
         st.switch_page("pages/3_チャット.py")

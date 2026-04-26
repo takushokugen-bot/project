@@ -22,5 +22,18 @@ for poem in poems:
         st.write(poem["body"])
 
         if st.button(f"興味があります（ID: {poem['id']}）", key=f"interest_{poem['id']}"):
+
+            # ★ 閲覧者として入る
+            st.session_state["role"] = "viewer"
+
+            # ★ どの作品か
             st.session_state["selected_poem_id"] = poem["id"]
+
+            # ★ 新規スレッドを作る可能性があるので thread_id は消す
+            st.session_state["selected_thread_id"] = None
+
+            # ★ 閲覧者名はまだ入力していないので消す
+            if "viewer_name" in st.session_state:
+                del st.session_state["viewer_name"]
+
             st.switch_page("pages/3_チャット.py")
